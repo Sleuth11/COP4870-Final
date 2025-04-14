@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Maui.eCommerce.Converters;
+using Microsoft.Extensions.Logging;
 
 namespace Maui.eCommerce
 {
@@ -16,7 +17,7 @@ namespace Maui.eCommerce
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

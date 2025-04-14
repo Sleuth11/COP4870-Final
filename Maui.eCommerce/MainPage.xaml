@@ -4,15 +4,40 @@
              x:Class="Maui.eCommerce.MainPage">
 
     <ScrollView>
-        <VerticalStackLayout>
+        <VerticalStackLayout Spacing="25" Padding="30">
+            <Label 
+                Text="Amazon"
+                FontSize="32"
+                HorizontalOptions="Center" />
+
             <Label
                 Text="{Binding Display}"
+                FontSize="18"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Margin="0,0,0,20"
                 />
+
             <Button
-            Text="Inventory Management"
-                Clicked="InventoryClicked"/>
+                Text="Shop"
+                Clicked="ShopClicked"
+                HeightRequest="60"
+                FontSize="18"
+                />
+
             <Button
-            Text="Shop"/>
+                Text="View Cart"
+                Clicked="CartClicked"
+                HeightRequest="60"
+                FontSize="18"
+                />
+
+            <Button
+                Text="Inventory Management"
+                Clicked="InventoryClicked"
+                HeightRequest="60"
+                FontSize="18"
+                />
         </VerticalStackLayout>
     </ScrollView>
 

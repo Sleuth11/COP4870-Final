@@ -4,18 +4,25 @@ namespace Maui.eCommerce
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = this;
+            BindingContext = new MainViewModel();
         }
 
-        private void InventoryClicked(object sender, EventArgs e)
+        private async void ShopClicked(object sender, EventArgs e)
         {
-            Shell.Current.GoToAsync("//InventoryManagement");
+            await Shell.Current.GoToAsync("//ShopView");
+        }
+
+        private async void CartClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//CartView");
+        }
+
+        private async void InventoryClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//InventoryManagement");
         }
     }
-
 }

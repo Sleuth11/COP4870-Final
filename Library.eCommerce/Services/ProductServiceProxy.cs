@@ -13,9 +13,9 @@ namespace Library.eCommerce.Services
         {
             Products = new List<Product?>
             {
-                new Product{Id = 1, Name ="Product 1"},
-                new Product{Id = 2, Name ="Product 2"},
-                new Product{Id = 3, Name ="Product 3"}
+                new Product{Id = 1, Name ="Eggs", Price = 999.99m, Quantity = 1},
+                new Product{Id = 2, Name ="IPhone", Price = 499.99m, Quantity = 10},
+                new Product{Id = 3, Name ="Milk", Price = 99.99m, Quantity = 15}
             };
         }
 
@@ -23,7 +23,7 @@ namespace Library.eCommerce.Services
         {
             get
             {
-                if(!Products.Any())
+                if (!Products.Any())
                 {
                     return 0;
                 }
@@ -38,7 +38,7 @@ namespace Library.eCommerce.Services
         {
             get
             {
-                lock(instanceLock)
+                lock (instanceLock)
                 {
                     if (instance == null)
                     {
@@ -52,27 +52,34 @@ namespace Library.eCommerce.Services
 
         public List<Product?> Products { get; private set; }
 
-
         public Product AddOrUpdate(Product product)
         {
-            if(product.Id == 0)
+            if (product.Id == 0)
             {
                 product.Id = LastKey + 1;
                 Products.Add(product);
             }
-
+            else
+            {
+                var existingProduct = Products.FirstOrDefault(p => p?.Id == product.Id);
+                if (existingProduct != null)
+                {
+                    int index = Products.IndexOf(existingProduct);
+                    Products[index] = product;
+                }
+            }
 
             return product;
         }
 
         public Product? Delete(int id)
         {
-            if(id == 0)
+            if (id == 0)
             {
                 return null;
             }
 
-            Product? product = Products.FirstOrDefault(p => p.Id == id);
+            Product? product = Products.FirstOrDefault(p => p?.Id == id);
             Products.Remove(product);
 
             return product;
@@ -80,10 +87,7 @@ namespace Library.eCommerce.Services
 
         public Product? GetById(int id)
         {
-            return Products.FirstOrDefault(p => p.Id == id);
+            return Products.FirstOrDefault(p => p?.Id == id);
         }
-
     }
-
-    
 }

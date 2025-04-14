@@ -2,18 +2,46 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Maui.eCommerce.Views.ProductDetails"
-             Title="ProductDetails"
+             Title="Product Details"
              NavigatedTo="ContentPage_NavigatedTo"
              >
-    <VerticalStackLayout>
+    <VerticalStackLayout Spacing="15" Padding="20">
         <Label 
-            Text="Name:"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            Text="Product Details"
+            FontSize="24"
+            HorizontalOptions="Center"
+            Margin="0,0,0,20" />
+
+        <Label Text="Name:"/>
         <Entry
             Text="{Binding Name}"
+            Placeholder="Enter product name"
             />
-        <Button Text="Ok" Clicked="OkClicked"/>
-        <Button Text="Go Back" Clicked="GoBackClicked"/>
+
+        <Label Text="Price:"/>
+        <Entry
+            Text="{Binding Price}"
+            Placeholder="Enter price"
+            Keyboard="Numeric"
+            />
+
+        <Label Text="Quantity in Stock:"/>
+        <Entry
+            Text="{Binding Quantity}"
+            Placeholder="Enter quantity"
+            Keyboard="Numeric"
+            />
+
+        <Button 
+            Text="Save" 
+            Clicked="OkClicked"
+            Margin="0,20,0,0"
+            BackgroundColor="Green"
+            />
+
+        <Button 
+            Text="Cancel" 
+            Clicked="GoBackClicked"
+            />
     </VerticalStackLayout>
 </ContentPage>
